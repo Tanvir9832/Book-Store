@@ -21,7 +21,12 @@
                 $errors['password'] = 'password length must be at least 8';
             }
         }
+
+        if(!array_filter($errors)){
+            header('Location: form.php');
+        }
     }
+
 ?>
 
 <!DOCTYPE html>
