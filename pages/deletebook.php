@@ -11,10 +11,8 @@
     if($email == $sessionEmail){
         $sql = "DELETE from book WHERE BookID = '$bookid'";
         $result=mysqli_query($conn,$sql);
-        if($result){
-            header("Location : http://localhost/practice/pages/profile.php");
-        }
+        header("Location: http://localhost/practice/pages/profile.php");
     }else{
-        header("Location : http://localhost/practice/");
+        header("Location: http://localhost/practice/");
     }
 ?>

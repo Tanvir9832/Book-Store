@@ -25,7 +25,7 @@ if($email == $sessionEmail){
         $genre = isset($_POST['genre']) ? $_POST['genre'] : $rowBook['Genre'];
         $price = isset($_POST['price']) ? $_POST['price'] : $rowBook['Price'];
         $description = isset($_POST['description']) ? $_POST['description'] : $rowBook['Description'];
-        $pname;
+
         if(isset($_FILES["file"]["name"])){
             $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
             $tname = $_FILES["file"]["tmp_name"];
@@ -34,13 +34,12 @@ if($email == $sessionEmail){
         }else{
             $pname = $rowBook['Image'];
         }
+
         $sql = " UPDATE book SET BookName='$bookName', Description='$description', Author='$author',
          Genre='$genre', Price='$price', Image = '$pname'  WHERE BookID='$bookid'";
 
         $result= mysqli_query($conn,$sql);
-        if($result){
-            header("Location : http://localhost/practice/pages/profile.php");
-        }
+        header("Location : http://localhost/practice/pages/profile.php");
     }
      
 }else{
@@ -64,7 +63,7 @@ if($email == $sessionEmail){
     <main class="update-book-main">
         <section class="update-book-section">
             <h2>Update Book Details</h2>
-            <form action="updatebook.php?userid=<?=$userid?>&bookid=<?=$bookid?>" method="POST" enctype="multipart/form-data">
+            <form  method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="bookTitle">Book Title:</label>
                     <input type="text" id="bookTitle" value=<?=$rowBook['BookName']?> name="bookName">
