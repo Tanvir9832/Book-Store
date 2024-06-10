@@ -58,9 +58,9 @@
         $tname = $_FILES["file"]["tmp_name"];
         $upload_dir = '../images';
         move_uploaded_file($tname, $upload_dir.'/'.$pname);
-
+        $name = mysqli_real_escape_string($conn, $name);
+        $description = mysqli_real_escape_string($conn, $description);
         
-
         $sql = "INSERT INTO book(BookName, Price, Image, UserID, Author, Genre, Description) 
         values ('$name','$price','$pname', '$userID' , '$author', '$genre', '$description')";
         $result = mysqli_query($conn,$sql);

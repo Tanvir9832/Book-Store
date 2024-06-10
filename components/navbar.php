@@ -19,6 +19,7 @@
                    <li style="cursor: pointer;" id="login">Login</li>
                    <li style="cursor: pointer;" id="register">Register</li>
                 <?php }else{ ?>
+                    <li style="cursor: pointer;" id="add-book">Add Book</li>
                     <li style="cursor: pointer;" id="profile"><?=$_SESSION['name']?></li>
                     <li><a href="http://localhost/practice/pages/logout.php">Logout </a></li>
                 <?php }  ?> 

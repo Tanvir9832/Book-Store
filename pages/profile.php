@@ -7,7 +7,7 @@
     $row = mysqli_fetch_assoc($result);
     $userID = $row['UserID'];
 
-    $sql = "SELECT Book.BookName, Book.Price , Book.Author, Book.Genre, Book.Description, 
+    $sql = "SELECT Book.BookName, User.UserID, Book.BookID, Book.Price , Book.Author, Book.Genre, Book.Description, 
     Book.Image
     FROM User
     LEFT JOIN Book ON $userID = Book.UserID";
@@ -34,7 +34,8 @@
                 <h2>Books Added by <?=$name?></h2>
                 <div class="book-grid">
                     <?php 
-                        while($rowOfBooks = mysqli_fetch_assoc($resultForBooks)){ ?>
+                        while($rowOfBooks = mysqli_fetch_assoc($resultForBooks)){
+                            ?>
                             <div class="book-card">
                                 <img src="../images/<?=$rowOfBooks['Image']?>" alt="Book 1">
                                 <h3><?=$rowOfBooks['BookName']?></h3>
@@ -42,8 +43,8 @@
                                 <p><strong>Genre:</strong> <?=$rowOfBooks['Genre']?></p>
                                 <p><strong>Price:</strong> <?=$rowOfBooks['Price']?></p>
                                 <div>
-                                    <button>update</button>
-                                    <button>delete</button>
+                                    <a href="http://localhost/practice/pages/updatebook.php?userid=<?=$rowOfBooks['UserID']?>&bookid=<?=$rowOfBooks['BookID']?>"><button>update</button></a>
+                                    <a href="http://localhost/practice/pages/deletebook.php?userid=<?=$rowOfBooks['UserID']?>&bookid=<?=$rowOfBooks['BookID']?>"><button>delete</button></a>
                                 </div>
                             </div>
                     <?php }
