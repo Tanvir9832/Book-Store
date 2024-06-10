@@ -1,0 +1,19 @@
+CREATE TABLE User (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255),
+    Email VARCHAR(255),
+    Password VARCHAR(255)
+);
+
+
+CREATE TABLE Book (
+    BookID INT PRIMARY KEY AUTO_INCREMENT,
+    BookName VARCHAR(255),
+    Price FLOAT,
+    Image VARCHAR(255),
+    UserID INT,
+    Author VARCHAR(255),
+    Genre VARCHAR(255),
+    Description VARCHAR(255),
+    FOREIGN KEY (UserID) REFERENCES User(UserID)
+);
